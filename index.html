@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savannah Trails</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0%;
+      height: 2px;
+      background-color: #ea580c; /* orange-600 */
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .brand {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  .fade-carousel {
+    animation: fadeSlide 10s infinite ease-in-out;
+  }
+
+  @keyframes fadeSlide {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    33% { opacity: 0; transform: scale(1.02); }
+    66% { opacity: 1; transform: scale(1); }
+  }
+
+  .destination-card {
+    transition: transform 0.3s ease;
+  }
+
+  .destination-card:hover {
+    transform: translateY(-4px);
+  }
+</style>
+
+</head>
+<body class="pt-16 bg-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 bg-amber-50 shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <!-- Logo & Brand -->
+      <div class="flex items-center space-x-2">
+        <img src="logoo.png" alt="Logo" class="h-10 w-auto" />
+        <span class="text-2xl brand">
+          <span class="text-amber-800">Savannah</span>
+          <span class="text-orange-600">Trails</span>
+        </span>
+      </div>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-6 text-[16px] font-semibold">
+        <a href="index.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="home" class="w-4 h-4"></i><span>Home</span>
+        </a>
+        <a href="destinations.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="map" class="w-4 h-4"></i><span>Destinations</span>
+        </a>
+        <a href="safari-packages.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="box" class="w-4 h-4"></i><span>Safari Packages</span>
+        </a>
+        <a href="booking.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="edit-3" class="w-4 h-4"></i><span>Booking</span>
+        </a>
+        <a href="about.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="users" class="w-4 h-4"></i><span>About Us</span>
+        </a>
+        <a href="gallery.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="image" class="w-4 h-4"></i><span>Gallery</span>
+        </a>
+        <a href="contact.html" class="flex items-center gap-1 text-amber-900 hover:text-orange-600 nav-link">
+          <i data-feather="phone" class="w-4 h-4"></i><span>Contact</span>
+        </a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="menuToggle" class="md:hidden text-amber-800 focus:outline-none">
+        <i data-feather="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Offcanvas -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-black bg-opacity-50 hidden">
+    <div class="fixed left-0 top-0 h-full w-64 bg-amber-50 p-4 overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <span class="text-lg font-semibold text-amber-800">Menu</span>
+        <button id="closeMenu" class="text-amber-800">
+          <i data-feather="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <nav class="space-y-4 text-amber-900 font-semibold">
+        <a href="index.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="home" class="w-5 h-5"></i>Home</a>
+        <a href="destinations.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="map" class="w-5 h-5"></i>Destinations</a>
+        <a href="safari-packages.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="box" class="w-5 h-5"></i>Safari Packages</a>
+        <a href="booking.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="edit-3" class="w-5 h-5"></i>Booking</a>
+        <a href="about.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="users" class="w-5 h-5"></i>About Us</a>
+        <a href="gallery.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="image" class="w-5 h-5"></i>Gallery</a>
+        <a href="contact.html" class="flex items-center gap-2 hover:text-orange-600"><i data-feather="phone" class="w-5 h-5"></i>Contact</a>
+      </nav>
+    </div>
+  </div>
+  
+<!-- Fixed Buttons for Desktop Only -->
+<div class="hidden md:flex" style="
+  position: fixed;
+  top: 35%;
+  right: 1rem;
+  z-index: 40;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f4ead5;
+  padding: 0.75rem;
+  border-radius: 1rem 0 0 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+">
+  <a href="booking.html" style="
+    text-align: center;
+    background-color: #dc2626;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+  " onmouseover="this.style.backgroundColor='#b91c1c'" onmouseout="this.style.backgroundColor='#dc2626'">Book Now</a>
+  
+  <a href="contact.html" style="
+    text-align: center;
+    background-color: #f97316;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+  " onmouseover="this.style.backgroundColor='#ea580c'" onmouseout="this.style.backgroundColor='#f97316'">Inquire Now</a>
+</div>
+
+
+
+
+<!-- Why Choose Savannah Trails -->
+<section class="bg-[#f4ead5] py-12 px-4 md:px-8 text-gray-800 font-sans">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-2 tracking-wide uppercase">Why Choose Savannah Trails</h2>
+    <h3 class="text-lg sm:text-xl md:text-2xl font-bold font-serif text-[#4b2e20] mb-6">The Experts With In-Depth Knowledge</h3>
+    <p class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-10">
+      Professional private guides, comfortable jeeps, flexible itineraries, and personalized service ensure your safari is unforgettable. Our team is dedicated to making your journey stress-free and magical.
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>100% specialized in Tanzania</strong><br>Deep expertise in all national parks and safari circuits.</p>
+      </div>
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>Private safaris</strong><br>Dedicated vehicles and expert local guides.</p>
+      </div>
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>Local travel advisors</strong><br>Based in Tanzania for real-time support.</p>
+      </div>
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>Guaranteed amazing experience</strong><br>Tailored adventures for all travel styles.</p>
+      </div>
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>Personalized support</strong><br>From booking to on-site assistance.</p>
+      </div>
+      <div class="flex items-start space-x-3">
+        <div class="text-orange-500 text-xl sm:text-2xl mt-1">✔</div>
+        <p class="text-sm sm:text-base"><strong>Fast & friendly service</strong><br>We're responsive, reliable, and approachable.</p>
+      </div>
+    </div>
+    
+    <div class="mt-10">
+      <a href="booking.html" class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-full shadow-md transition">
+        BOOK NOW
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#eaf0ea] py-12 px-4 md:px-8 text-gray-800 font-sans">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 text-center mb-2 uppercase tracking-wide" style="font-family: 'DM Serif Display', serif;">Top Tanzania Destinations</h2>
+    <h3 class="text-lg sm:text-xl md:text-2xl font-bold font-serif text-[#2d4739] text-center mb-10">Breathtaking places to explore</h3>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- DESTINATION CARD -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="10.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Ngorongoro" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="globe" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Ngorongoro Crater</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Ngorongoro Conservation</h4>
+          <p class="text-sm text-gray-600 mb-3">Home to a unique volcanic caldera filled with wildlife.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+      
+      <!-- Repeat for other 5 destinations below -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="20.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Manyara" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="droplet" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Lake Manyara</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Lake Manyara National Park</h4>
+          <p class="text-sm text-gray-600 mb-3">Famous for tree-climbing lions and flamingos.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="30.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Serengeti" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="map" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Serengeti</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Serengeti National Park</h4>
+          <p class="text-sm text-gray-600 mb-3">Home of the Great Migration and Big 5 game.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="40.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Kilimanjaro" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="activity" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Mt. Kilimanjaro</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Kilimanjaro Mountain</h4>
+          <p class="text-sm text-gray-600 mb-3">Africa's tallest mountain and trekker’s dream.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="50.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Zanzibar" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="sun" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Zanzibar</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Zanzibar Beach</h4>
+          <p class="text-sm text-gray-600 mb-3">White sand beaches and rich Swahili culture.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-xl overflow-hidden shadow-md destination-card">
+        <div class="relative h-40 sm:h-48 overflow-hidden">
+          <img src="60.jpg" class="w-full h-full object-cover absolute fade-carousel" alt="Tarangire" />
+        </div>
+        <div class="p-4">
+          <div class="flex items-center gap-2 text-green-800 mb-1">
+            <i data-feather="tree" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Tarangire</span>
+          </div>
+          <h4 class="text-lg font-semibold text-amber-800 mb-1">Tarangire National Park</h4>
+          <p class="text-sm text-gray-600 mb-3">Famous for elephants and baobab trees.</p>
+          <a href="#" class="text-orange-600 font-semibold text-sm hover:underline">Learn More →</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="text-center mt-10">
+      <a href="destinations.html" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-full shadow-md transition">
+        VIEW MORE DESTINATIONS
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="bg-[#f4ead5] py-12 px-4 md:px-8 text-gray-800 font-sans">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 text-center mb-2 uppercase tracking-wide fade-in-up">Featured Safari Packages</h2>
+    <h3 class="text-lg sm:text-xl md:text-2xl font-bold font-serif text-[#4b2e20] text-center mb-10 fade-in-up" style="animation-delay: 0.2s;">Handpicked Adventures Just for You</h3>
+    
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      <!-- Package 1 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="10.jpg" alt="Serengeti" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="map-pin" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Serengeti National Park</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Serengeti Explorer</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$1,200</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+      
+      <!-- Package 2 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="20.jpg" alt="Ngorongoro" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="compass" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Ngorongoro Crater</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Ngorongoro Adventure</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$950</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+      
+      <!-- Package 3 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="30.jpg" alt="Tarangire" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="tree" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Tarangire Wildlife</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Tarangire Discovery</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$800</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+      
+      <!-- Package 4 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="40.jpg" alt="Zanzibar" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="sun" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Zanzibar Beaches</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Zanzibar Escape</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$650</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+      
+      <!-- Package 5 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="50.jpg" alt="Kilimanjaro" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="activity" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Mount Kilimanjaro</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Kilimanjaro Trek</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$1,500</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+      
+      <!-- Package 6 -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md">
+        <img src="60.jpg" alt="Lake Manyara" class="w-full h-32 sm:h-40 object-cover" />
+        <div class="p-3 sm:p-4">
+          <div class="flex items-center gap-2 text-orange-600 mb-1">
+            <i data-feather="droplet" class="w-4 h-4"></i>
+            <span class="text-xs font-medium">Lake Manyara</span>
+          </div>
+          <h3 class="text-sm sm:text-base font-semibold text-amber-800 mb-1">Manyara Safari</h3>
+          <p class="text-xs sm:text-sm text-gray-700 mb-3">From <span class="text-orange-600 font-bold">$700</span></p>
+          <a href="#" class="inline-block bg-red-600 hover:bg-red-700 text-white text-xs px-3 py-1.5 rounded-full font-semibold transition">View Itinerary</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="text-center mt-10 fade-in-up" style="animation-delay: 0.4s;">
+      <a href="safari-packages.html" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-full shadow-md transition">
+        VIEW MORE PACKAGES
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Mobile Fixed Bottom Buttons -->
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex justify-center gap-4 bg-white p-3 shadow-md border-t border-gray-200">
+  <a href="booking.html" class="flex-1 text-center bg-red-600 hover:bg-red-700 text-white font-semibold text-sm py-2 rounded-full transition">Book Now</a>
+  <a href="contact.html" class="flex-1 text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold text-sm py-2 rounded-full transition">Inquire Now</a>
+</div>
+
+  <!-- Feather Icon Init + Offcanvas JS -->
+  <script>
+    feather.replace();
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
